@@ -9,6 +9,8 @@
 import UIKit
 
 class addGroupViewController: UIViewController {
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var descript: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
