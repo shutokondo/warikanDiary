@@ -19,6 +19,10 @@ class groupTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "作成", style: .Plain, target: self, action: "tappedAddButton")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,6 +39,10 @@ class groupTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
+    }
+    
+    func tappedAddButton() {
+        self.performSegueWithIdentifier("sheetAddSegue", sender: self)
     }
 
     /*
