@@ -1,0 +1,16 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '6.0'
+use_frameworks!
+
+target 'warikanDiary' do
+    pod 'Alamofire', '~> 1.2'
+end
+
+target 'warikanDiaryTests' do
+
+end
+
+target 'warikanDiaryUITests' do
+
+end
+
