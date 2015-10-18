@@ -9,5 +9,11 @@
 import UIKit
 
 class GroupManager: NSObject {
+    static let sharedInstance = GroupManager()
+    var groups: [Group] = []
+    
+    func addGroup(group: Group) {
+        self.groups.append(group)
+    }
 
 }
