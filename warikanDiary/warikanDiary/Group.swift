@@ -9,5 +9,6 @@
 import UIKit
 
 class Group: NSObject {
-
+    var name: String!
+    var descript: String!
 }
