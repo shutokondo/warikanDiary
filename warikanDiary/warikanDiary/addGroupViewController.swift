@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import Alamofire
 
-class addGroupViewController: UIViewController {
+class addGroupViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var descript: UITextView!
+    
+    let warikanGroup = GroupManager.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        name.delegate = self
+        descript.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -33,7 +39,26 @@ class addGroupViewController: UIViewController {
     }
     
     func create() {
-        
+        if (name.text?.characters.count) == 0 {
+            let alertView = UIAlertController(title: "エラー", message: "グループ名が記入されていません", preferredStyle: .Alert)
+            alertView.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
+            self.presentViewController(alertView, animated: true, completion: nil)
+        } else if (descript.text?.characters.count) == 0 {
+            let alertView = UIAlertController(title: "エラー", message: "グループの説明がありません", preferredStyle: .Alert)
+            alertView.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
+            self.presentViewController(alertView, animated: true, completion: nil)
+        } else {
+            
+            let params = [
+                "name": name.text,
+                "descript": descript.text,
+            ]
+            
+            Alamofire.request(.POST, "http://localhost:3000/api/groups", parameters: params)
+                .responseJSON { response in
+            }
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
 
